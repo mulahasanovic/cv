@@ -1,0 +1,128 @@
+---
+import "../styles/global.css";
+import PersonalDetails, {
+  type PersonalDetailsProps,
+} from "../components/PersonalDetails.astro";
+import { Icon } from "astro-icon/components";
+import Section from "../components/Section.astro";
+import Entry, { type EntryProps } from "../components/Entry.astro";
+import Skill, { Proficiency, type SkillProps } from "../components/Skill.astro";
+
+const personalDetails: PersonalDetailsProps = {
+  firstName: "First",
+  middleName: "Middle",
+  lastName: "Last",
+  jobTitle: "Job title",
+  phoneNumber: "+5551234567",
+  emailAddress: "email@email.com",
+  city: "City",
+  country: "Country",
+  personalWebsite: "website",
+};
+const skills: SkillProps[] = [
+  { label: "HTML", proficiency: Proficiency.Basic },
+  { label: "CSS", proficiency: Proficiency.Intermediate },
+  { label: "JavaScript", proficiency: Proficiency.Advanced },
+  { label: "TypeScript", proficiency: Proficiency.Expert },
+  { label: "React", proficiency: Proficiency.Basic },
+  { label: "Astro", proficiency: Proficiency.Intermediate },
+  { label: "Writing Docs", proficiency: Proficiency.Advanced },
+  {
+    label:
+      "Very long skills don't break alignment too much, but don't go overboard",
+    proficiency: Proficiency.Expert,
+  },
+  {
+    label: "You can also add skills without Proficiency level",
+  },
+];
+const languages: SkillProps[] = [
+  { label: "Some native language", proficiency: Proficiency.Native },
+  { label: "English", proficiency: Proficiency.Fluent },
+];
+const experiences = await Astro.glob<EntryProps>("../experiences/*.md");
+const education = await Astro.glob<EntryProps>("../education/*.md");
+
+const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
+  personalDetails.jobTitle
+} | ${new Date().toLocaleDateString()} | Resume`;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={`Minimal Web Resume`} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body
+    class="font-sans text-neutral-800 dark:text-neutral-200 lg:p-12 dark:bg-neutral-800"
+  >
+    <button
+      data-print-button
+      class="bg-white dark:bg-neutral-900 size-16
+    rounded-full shadow-md fixed top-4 right-4 print:hidden"
+      type="button"
+      >PDF<Icon
+        size={14}
+        name={"icon_link"}
+        class="inline-block align-middle print:hidden"
+      /></button
+    >
+    <main
+      class="rounded-lg mx-auto my-auto max-w-4xl space-y-14 shadow-2xl p-16 print:shadow-none print:p-0 dark:bg-neutral-900"
+    >
+      <PersonalDetails {...personalDetails} />
+
+      <Section title="Summary">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </Section>
+
+      <Section title="Experience">
+        {
+          experiences.map((exp) => (
+            <Entry
+              {...exp.frontmatter}
+              compiledContent={exp.compiledContent()}
+            />
+          ))
+        }
+      </Section>
+
+      <Section title="Education">
+        {
+          education.map((edu) => (
+            <Entry
+              {...edu.frontmatter}
+              compiledContent={edu.compiledContent()}
+            />
+          ))
+        }
+      </Section>
+
+      <Section title="Skills">
+        <ul class="space-y-2 sm:columns-2">
+          {skills.map((skill) => <Skill {...skill} />)}
+        </ul>
+      </Section>
+
+      <Section title="Languages">
+        <ul class="space-y-2 sm:columns-2">
+          {languages.map((lang) => <Skill {...lang} />)}
+        </ul>
+      </Section>
+    </main>
+    <script>
+      const button = document.querySelector("[data-print-button]");
+      button?.addEventListener("click", () => window.print());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {}
+let { href, ...attrs } = Astro.props;
+
+if (typeof href === "string") {
+  href = href?.startsWith("https://") ? href : `https://${href}`;
+}
+---
+
+<a href={href} {...attrs}>
+  <slot />
+  <Icon
+    size={14}
+    name={"icon_link"}
+    class="inline-block align-middle print:hidden"
+  />
+</a>

@@ -1,0 +1,30 @@
+---
+import type { ComponentProps } from "astro/types";
+
+export enum Proficiency {
+  Basic = 1,
+  Intermediate,
+  Advanced,
+  Expert,
+  Fluent,
+  Native,
+}
+
+interface Props {
+  label: string;
+  proficiency?: Proficiency;
+}
+const { label, proficiency } = Astro.props;
+export type SkillProps = ComponentProps<typeof Skill>;
+---
+
+<li class="flex items-center">
+  <div class="w-full mr-2.5">{label}</div>
+  {
+    proficiency && (
+      <div class="min-w-28 text-black/50 dark:text-white/50">
+        {Proficiency[proficiency]}
+      </div>
+    )
+  }
+</li>

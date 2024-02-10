@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+img {
+  font-style: italic;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+html {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+strong {
+  font-weight: 500 !important;
+}
+
+ul {
+  list-style-type: disc !important;
+}
+ol {
+  list-style-type: decimal !important;
+}
+ul,
+ol {
+  list-style-position: inside;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 15mm;
+}

@@ -1,0 +1,54 @@
+---
+import type { ComponentProps } from "astro/types";
+import LinkWithArrow from "./LinkWithArrow.astro";
+
+interface Props {
+  title: string;
+  sub: string;
+  subLink?: string;
+  startDate?: string;
+  endDate?: string | "present";
+  compiledContent: string;
+}
+
+const { title, sub, subLink, compiledContent, startDate, endDate } =
+  Astro.props;
+
+if (!title) {
+  throw new Error("Entry title is not optional.");
+}
+if (!sub) {
+  throw new Error("Entry sub-title is not optional.");
+}
+if (!compiledContent) {
+  throw new Error("Entry content is not optional.");
+}
+export type EntryProps = ComponentProps<typeof Entry>;
+---
+
+<div>
+  <header class="flex">
+    <div>
+      <h3 class="font-medium">{title}</h3>
+      {
+        subLink ? (
+          <LinkWithArrow href={subLink}>
+            <h4 class="inline text-black/50 dark:text-white/50">{sub}</h4>
+          </LinkWithArrow>
+        ) : (
+          <h4 class="inline text-black/50 dark:text-white/50">{sub}</h4>
+        )
+      }
+    </div>
+    {
+      (startDate || endDate) && (
+        <div class="text-black/50 dark:text-white/50 ml-auto">
+          {`${startDate ? `${startDate} - ` : ""}${endDate ? endDate : ""}`}
+        </div>
+      )
+    }
+  </header>
+  <div class="mt-1.5 space-y-1.5">
+    <Fragment set:html={compiledContent} />
+  </div>
+</div>

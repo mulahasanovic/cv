@@ -1,0 +1,122 @@
+---
+import type { ComponentProps } from "astro/types";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import personPlaceholder from "../images/person_placeholder.svg";
+import LinkWithArrow from "./LinkWithArrow.astro";
+interface Props {
+  firstName: string;
+  middleName?: string;
+  lastName: string;
+  jobTitle: string;
+  phoneNumber?: string;
+  emailAddress?: string;
+  city?: string;
+  country?: string;
+  personalWebsite?: string;
+  showImage?: boolean;
+}
+const {
+  firstName,
+  middleName,
+  lastName,
+  jobTitle,
+  phoneNumber,
+  emailAddress,
+  city,
+  country,
+  personalWebsite,
+  showImage = true,
+} = Astro.props;
+export type PersonalDetailsProps = ComponentProps<typeof PersonalDetails>;
+---
+
+<div class="flex flex-wrap md:flex-nowrap print:flex-nowrap">
+  {
+    showImage && (
+      <Image
+        src={personPlaceholder}
+        class="bg-slate-400 rounded-md shadow-md mb-10 mr-10 md:mb-0"
+        alt="Person placeholder image"
+        format="svg"
+      />
+    )
+  }
+  <div class="w-60 mr-10 mb-10 sm:mb-0">
+    <h1 class="text-4xl font-bold">
+      {firstName}
+      {middleName && middleName}
+      {lastName}
+    </h1>
+    <h2 class="text-2xl mt-1.5">
+      {jobTitle}
+    </h2>
+  </div>
+  <div class="w-72 space-y-1.5 md:ml-auto">
+    {
+      phoneNumber && (
+        <h5 class="relative">
+          <Icon
+            size={12}
+            name={"icon_phone"}
+            class="block absolute top-0 bottom-0 m-auto"
+          />
+          <span class="block translate-x-6">{phoneNumber}</span>
+        </h5>
+      )
+    }
+    {
+      emailAddress && (
+        <h5 class="relative">
+          <Icon
+            width={12}
+            height={10}
+            name="icon_mail"
+            class="block absolute top-0 bottom-0 m-auto"
+          />
+          <a
+            class="block translate-x-6 after-link-arrow"
+            href={`mailto:${emailAddress}`}
+          >
+            {emailAddress}
+          </a>
+        </h5>
+      )
+    }
+    {
+      personalWebsite && (
+        <h5 class="relative">
+          <Icon
+            size={12}
+            name="icon_web"
+            class="block absolute top-0 bottom-0 m-auto"
+          />
+          <LinkWithArrow
+            href={personalWebsite}
+            class="block translate-x-6 after-link-arrow"
+            target="_blank"
+          >
+            {personalWebsite}
+          </LinkWithArrow>
+        </h5>
+      )
+    }
+    {
+      (city || country) && (
+        <h5 class="relative">
+          <Icon
+            width={10}
+            height={13}
+            name="icon_location"
+            class="block absolute top-0 bottom-0 m-auto"
+          />
+          <span class="block translate-x-6 ">
+            {`${city ? city : ""}${city && country ? ", " : ""}${
+              country ? country : ""
+            }`}
+          </span>
+        </h5>
+      )
+    }
+  </div>
+</div>
