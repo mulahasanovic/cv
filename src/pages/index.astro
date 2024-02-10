@@ -46,6 +46,7 @@ const languages: SkillProps[] = [
   { label: "English", proficiency: Proficiency.Fluent },
 ];
 const experiences = await Astro.glob<EntryProps>("../experiences/*.md");
+const internships = await Astro.glob<EntryProps>("../internships/*.md");
 const education = await Astro.glob<EntryProps>("../education/*.md");
 
 const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
@@ -82,13 +83,10 @@ const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
       <PersonalDetails {...personalDetails} />
 
       <Section title="Summary">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        Software Developer with a strong focus on details. Proactive and willing
+        to learn new stuff. Worked with multiple technologies across many
+        different projects, including design, architecture, optimizations and
+        user experience for almost a decade.
       </Section>
 
       <Section title="Experience">
@@ -97,6 +95,17 @@ const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
             <Entry
               {...exp.frontmatter}
               compiledContent={exp.compiledContent()}
+            />
+          ))
+        }
+      </Section>
+
+      <Section title="Internships">
+        {
+          internships.map((internship) => (
+            <Entry
+              {...internship.frontmatter}
+              compiledContent={internship.compiledContent()}
             />
           ))
         }
