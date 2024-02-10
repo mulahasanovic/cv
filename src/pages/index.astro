@@ -9,35 +9,40 @@ import Entry, { type EntryProps } from "../components/Entry.astro";
 import Skill, { Proficiency, type SkillProps } from "../components/Skill.astro";
 
 const personalDetails: PersonalDetailsProps = {
-  firstName: "First",
-  middleName: "Middle",
-  lastName: "Last",
-  jobTitle: "Job title",
-  phoneNumber: "+5551234567",
-  emailAddress: "email@email.com",
-  city: "City",
-  country: "Country",
-  personalWebsite: "website",
+  firstName: "Sead",
+  lastName: "Mulahasanović",
+  jobTitle: "Software Developer",
+  phoneNumber: "+38762267917",
+  emailAddress: "mulahasanovic@outlook.com",
+  city: "Bugojno",
+  country: "Bosnia and Herzegovina",
+  personalWebsite: "sead.dev",
 };
 const skills: SkillProps[] = [
-  { label: "HTML", proficiency: Proficiency.Basic },
-  { label: "CSS", proficiency: Proficiency.Intermediate },
-  { label: "JavaScript", proficiency: Proficiency.Advanced },
-  { label: "TypeScript", proficiency: Proficiency.Expert },
-  { label: "React", proficiency: Proficiency.Basic },
-  { label: "Astro", proficiency: Proficiency.Intermediate },
-  { label: "Writing Docs", proficiency: Proficiency.Advanced },
-  {
-    label:
-      "Very long skills don't break alignment too much, but don't go overboard",
-    proficiency: Proficiency.Expert,
-  },
-  {
-    label: "You can also add skills without Proficiency level",
-  },
+  { label: "React" },
+  { label: "TypeScript" },
+  { label: "JavaScript" },
+  { label: "Node" },
+  { label: "Next.js" },
+  { label: "Astro" },
+  { label: "Tailwind CSS" },
+  { label: "Sass (SCSS)" },
+  { label: "CSS" },
+  { label: "PostgreSQL" },
+  { label: "Redis" },
+  { label: "Git" },
+  { label: "API Development and integrations" },
+  { label: "Progressive Web Apps (PWA)" },
+  { label: "Responsive Web Design" },
+  { label: "GraphQL" },
+  { label: "Event Sourcing" },
+  { label: "C#" },
+  { label: "Unity" },
+  { label: "C++" },
+  { label: "Project Management" },
 ];
 const languages: SkillProps[] = [
-  { label: "Some native language", proficiency: Proficiency.Native },
+  { label: "Bosnian", proficiency: Proficiency.Native },
   { label: "English", proficiency: Proficiency.Fluent },
 ];
 const experiences = await Astro.glob<EntryProps>("../experiences/*.md");
