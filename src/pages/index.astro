@@ -48,6 +48,7 @@ const languages: SkillProps[] = [
 const experiences = await Astro.glob<EntryProps>("../experiences/*.md");
 const internships = await Astro.glob<EntryProps>("../internships/*.md");
 const education = await Astro.glob<EntryProps>("../education/*.md");
+const projects = await Astro.glob<EntryProps>("../projects/*.md");
 
 const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
   personalDetails.jobTitle
@@ -132,6 +133,14 @@ const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
         <ul class="space-y-2 sm:columns-2">
           {languages.map((lang) => <Skill {...lang} />)}
         </ul>
+      </Section>
+
+      <Section title="Projects">
+        {
+          projects.map((p) => (
+            <Entry {...p.frontmatter} compiledContent={p.compiledContent()} />
+          ))
+        }
       </Section>
     </main>
     <script>
