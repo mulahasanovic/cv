@@ -7,6 +7,49 @@ import { Icon } from "astro-icon/components";
 import Section from "../components/Section.astro";
 import Entry, { type EntryProps } from "../components/Entry.astro";
 import Skill, { Proficiency, type SkillProps } from "../components/Skill.astro";
+import type { MarkdownInstance } from "astro";
+
+function compareDates(
+  date1: string | undefined,
+  date2: string | undefined
+): number {
+  if (!date1 && !date2) {
+    return 0; // Both dates are undefined, consider them equal
+  }
+
+  if (!date1) {
+    return 1; // date1 is undefined, consider date2 greater
+  }
+
+  if (!date2) {
+    return -1; // date2 is undefined, consider date1 greater
+  }
+
+  const [month1, year1] = date1.split("/");
+  const [month2, year2] = date2.split("/");
+
+  const date1Value = new Date(`${year1}-${month1}`);
+  const date2Value =
+    date2 === "present" ? new Date() : new Date(`${year2}-${month2}`);
+
+  return date2Value.getTime() - date1Value.getTime();
+}
+
+const sortWorkExperience = (
+  a: MarkdownInstance<EntryProps>,
+  b: MarkdownInstance<EntryProps>
+) => {
+  const startDateComparison = compareDates(
+    a.frontmatter.startDate,
+    b.frontmatter.startDate
+  );
+
+  if (startDateComparison !== 0) {
+    return startDateComparison;
+  } else {
+    return compareDates(a.frontmatter.endDate, b.frontmatter.endDate);
+  }
+};
 
 const personalDetails: PersonalDetailsProps = {
   firstName: "Sead",
@@ -46,9 +89,16 @@ const languages: SkillProps[] = [
   { label: "English", proficiency: Proficiency.Fluent },
 ];
 const experiences = await Astro.glob<EntryProps>("../experiences/*.md");
+experiences.sort(sortWorkExperience);
+
 const internships = await Astro.glob<EntryProps>("../internships/*.md");
+internships.sort(sortWorkExperience);
+
 const education = await Astro.glob<EntryProps>("../education/*.md");
+education.sort(sortWorkExperience);
+
 const projects = await Astro.glob<EntryProps>("../projects/*.md");
+projects.sort(sortWorkExperience);
 
 const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
   personalDetails.jobTitle
