@@ -1,5 +1,5 @@
 ---
-title: Front End React Developer
+title: Front End Developer
 sub: Wokik
 startDate: 11/2021
 endDate: 04/2022

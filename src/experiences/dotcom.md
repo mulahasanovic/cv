@@ -5,4 +5,10 @@ startDate: "01/2018"
 endDate: "06/2022"
 ---
 
-todo
+- Worked on multiple SaaS projects spanning more than four years.
+- I was involved with design, development, and maintanence.
+- Main projects:
+  - [Asianmonitor - Sportsbook Risk Management](#sportsbook-risk-management)
+  - [Betmonitor - Betting Odds Comparison Tool](#odds-comparison-tool)
+
+Tech: PHP, JavaScript, jQuery, MySQL, Babel, Sass, PostCSS, PWA, TWA
