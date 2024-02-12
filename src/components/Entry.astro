@@ -32,7 +32,7 @@ export type EntryProps = ComponentProps<typeof Entry>;
       <h3 class="font-medium">{title}</h3>
       {
         subLink ? (
-          <LinkWithArrow href={subLink}>
+          <LinkWithArrow href={subLink} target="_blank">
             <h4 class="inline text-black/50 dark:text-white/50">{sub}</h4>
           </LinkWithArrow>
         ) : (

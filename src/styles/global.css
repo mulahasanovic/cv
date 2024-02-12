@@ -15,21 +15,32 @@ html {
 }
 
 strong {
-  font-weight: 500 !important;
+  @apply font-medium;
 }
 
 ul {
-  list-style-type: disc !important;
+  @apply list-disc;
 }
 ol {
-  list-style-type: decimal !important;
+  @apply list-decimal;
 }
 ul,
 ol {
-  list-style-position: inside;
+  @apply list-outside;
+}
+
+@media print {
+  ul,
+  ol {
+    @apply list-inside;
+  }
 }
 
 @page {
   size: A4 portrait;
   margin: 15mm;
+}
+
+ul ul {
+  @apply pl-4;
 }
