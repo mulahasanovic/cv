@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/76c2910b-ef74-4452-a9e7-f8668ad8a15d/deploy-status)](https://app.netlify.com/sites/gleeful-fox-1731f6/deploys)
+
 # Quick CV \ Resume template based on Astro Starter Kit: Minimal
 
 - At `index.astro` update the following:
@@ -7,6 +9,10 @@
 - Create `md` files with your experiences and education in their respective folders
 - Edit the template as you see fit, add new sections, hide sections, remove sections, customize styles
 - Good luck & Enjoy
+
+## 🖼️ Live
+
+Resume is hosted at netlify, you can visit it at [https://cv.sead.dev](https://cv.sead.dev) to check it out.
 
 ## 🚀 Project Structure
 
