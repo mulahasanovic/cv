@@ -16,7 +16,7 @@ Brand Ambassdor Management Software, SaaS SPA
 
 Tech: React, Tailwind, TypeScript, JavaScript, Node, PostgreSQL, Apollo, GraphQL, Redis
 
-_Achievments_
+_Achievements_
 
 - I established myself as a reliable software developer. I quickly became the go-to person for
   the support team for feedback and bug reports, including all custom reports and statistic

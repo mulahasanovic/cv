@@ -12,4 +12,4 @@ Notable curriculum
 - Computer Graphics and video game development (Unity)
 - Algorithms and data structures
 - Mobile App Development (Java, Android)
-- Desktop and Web App Development (.NET, MSSQL, Javascript)
+- Desktop and Web App Development (.NET, MSSQL, JavaScript)

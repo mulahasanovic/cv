@@ -11,4 +11,4 @@ Dental Management System
 - I was involved with research, design, planning, and development.
 - The most notable feature I've worked on is the Odontogram, with dynamic selection, standardised data parsing, and visualisation.
 
-Tech: React, Mantine, Axios, Go, Java, Springboot
+Tech: React, Mantine, Axios, Go, Java, Spring Boot
