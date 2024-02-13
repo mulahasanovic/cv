@@ -137,17 +137,44 @@ const pageUrl = `https://cv.sead.dev`;
   <body
     class="font-sans text-neutral-800 dark:text-neutral-200 lg:p-12 dark:bg-neutral-800"
   >
-    <button
-      data-print-button
-      class="bg-white dark:bg-neutral-900 size-16
-      rounded-full shadow-md fixed top-4 right-4 print:hidden"
-      type="button"
-      >PDF<Icon
-        size={14}
-        name={"icon_link"}
-        class="inline-block align-middle print:hidden"
-      /></button
+    <label
+      for="options"
+      class="fixed flex justify-center items-center pointer top-4 right-4 print:hidden text-neutral-800 bg-white size-16
+    rounded-full shadow-md has-[:checked]:size-80 has-[:checked]:-top-40 has-[:checked]:-right-32 has-[:checked]:shadow-lg transition-all"
     >
+      <input
+        id="options"
+        class="peer/options hidden"
+        type="checkbox"
+        name="options"
+      />
+      <div class="peer-checked/options:hidden">
+        PDF
+        <Icon size={14} name={"icon_link"} class="inline-block align-middle" />
+      </div>
+      <div
+        class="fixed top-4 right-4 hidden peer-checked/options:block space-y-4"
+      >
+        <button class="block select-none" data-print-button type="button"
+          >Print (Save as PDF)<Icon
+            size={14}
+            name={"icon_link"}
+            class="inline-block align-middle"
+          /></button
+        >
+        <a
+          href="/Sead Mulahasanović - Software Developer - Resume.pdf"
+          class="block select-none"
+          download
+        >
+          Download .PDF<Icon
+            size={14}
+            name={"icon_link"}
+            class="inline-block align-middle"
+          />
+        </a>
+      </div>
+    </label>
     <main
       class="rounded-lg mx-auto my-auto max-w-4xl space-y-14 shadow-2xl p-16 print:shadow-none print:p-0 dark:bg-neutral-900"
     >
