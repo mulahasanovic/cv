@@ -194,8 +194,23 @@ const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
       </Section>
     </main>
     <script>
+      function isInApp(): boolean {
+        const rules = [
+          "WebView",
+          "(iPhone|iPod|iPad)(?!.*Safari/)",
+          "Android.*(wv)",
+        ];
+        const regex = new RegExp(`(${rules.join("|")})`, "ig");
+        return Boolean(navigator.userAgent.match(regex));
+      }
+
       const button = document.querySelector("[data-print-button]");
-      button?.addEventListener("click", () => window.print());
+
+      if (!isInApp()) {
+        button?.addEventListener("click", () => print());
+      } else {
+        button?.classList.add("hidden");
+      }
     </script>
   </body>
 </html>
