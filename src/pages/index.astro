@@ -100,9 +100,11 @@ education.sort(sortWorkExperience);
 const projects = await Astro.glob<EntryProps>("../projects/*.md");
 projects.sort(sortWorkExperience);
 
-const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
-  personalDetails.jobTitle
-} | ${new Date().toLocaleDateString()} | Resume`;
+const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${personalDetails.jobTitle}`;
+const pageDescription = `${personalDetails.firstName} ${
+  personalDetails.lastName
+} | ${new Date().toLocaleDateString()} | Minimal Web Resume`;
+const pageUrl = `https://cv.sead.dev`;
 ---
 
 <html lang="en">
@@ -110,7 +112,25 @@ const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={`Minimal Web Resume`} />
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content="Sead Mulahasanović | Sead Dev" />
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content=`${pageUrl}` />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content=`${pageUrl}/meta-cover.png` />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@sead1dev" />
+    <meta name="twitter:creator" content="@sead1dev" />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:url" content=`${pageUrl}` />
+    <meta property="twitter:description" content={pageDescription} />
+    <meta property="twitter:image" content=`${pageUrl}/meta-cover.png` />
+
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
@@ -120,7 +140,7 @@ const pageTitle = `${personalDetails.firstName} ${personalDetails.lastName} | ${
     <button
       data-print-button
       class="bg-white dark:bg-neutral-900 size-16
-    rounded-full shadow-md fixed top-4 right-4 print:hidden"
+      rounded-full shadow-md fixed top-4 right-4 print:hidden"
       type="button"
       >PDF<Icon
         size={14}
