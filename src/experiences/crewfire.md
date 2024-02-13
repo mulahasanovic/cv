@@ -21,4 +21,4 @@ _Achievments_
 - I established myself as a reliable software developer. I quickly became the go-to person for
   the support team for feedback and bug reports, including all custom reports and statistic
   requests that needed to be pulled directly from the database.
-- Led the development effort to reduce client churn by 50%.
+- Led the development effort to reduce the backlog, fix issues, and improve client satisfaction across the whole app experience, which resulted in a 50% reduction in client churn.

@@ -10,5 +10,6 @@ endDate: "06/2022"
 - Main projects:
   - [Asianmonitor - Sportsbook Risk Management](#sportsbook-risk-management)
   - [Betmonitor - Betting Odds Comparison Tool](#odds-comparison-tool)
+  - [Betmonitor.pro - Betting Odds Comparison Tool](#premium-odds-comparison-tool)
 
 Tech: PHP, JavaScript, jQuery, MySQL, Babel, Sass, PostCSS, PWA, TWA
