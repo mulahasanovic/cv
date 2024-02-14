@@ -6,7 +6,7 @@ endDate: "06/2022"
 ---
 
 - Worked on multiple SaaS projects spanning more than four years.
-- I was involved with design, development, and maintanence.
+- I was involved with design, development, and maintenance.
 - Main projects:
   - [Asianmonitor - Sportsbook Risk Management](#sportsbook-risk-management)
   - [Betmonitor - Betting Odds Comparison Tool](#odds-comparison-tool)

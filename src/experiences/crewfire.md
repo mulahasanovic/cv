@@ -6,7 +6,7 @@ startDate: 06/2022
 endDate: 06/2023
 ---
 
-Brand Ambassdor Management Software, SaaS SPA
+Brand Ambassador Management Software, SaaS SPA
 
 - Closely worked with the support team to instantly respond to client issues, bug reports, and feedback.
 - Integrated ClickUp's Bug Reporting tool.
