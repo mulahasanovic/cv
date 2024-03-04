@@ -201,7 +201,7 @@ const pageUrl = `https://cv.sead.dev`;
         }
       </Section>
 
-      <Section title="Internships">
+      <Section title="Internships" visible={false}>
         {
           internships.map((internship) => (
             <Entry
@@ -223,7 +223,7 @@ const pageUrl = `https://cv.sead.dev`;
         }
       </Section>
 
-      <Section title="Skills">
+      <Section title="Skills" visible={false}>
         <ul class="space-y-2 sm:columns-2">
           {skills.map((skill) => <Skill {...skill} />)}
         </ul>
@@ -235,7 +235,7 @@ const pageUrl = `https://cv.sead.dev`;
         </ul>
       </Section>
 
-      <Section title="Projects">
+      <Section title="Projects" className="break-before-page">
         {
           projects.map((p) => (
             <Entry {...p.frontmatter} compiledContent={p.compiledContent()} />

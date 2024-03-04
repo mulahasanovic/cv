@@ -3,15 +3,16 @@ import type { ComponentProps } from "astro/types";
 
 interface Props {
   title: string;
+  className?: string;
   visible?: boolean;
 }
-const { title, visible = true } = Astro.props;
+const { title, className = "", visible = true } = Astro.props;
 export type SectionProps = ComponentProps<typeof Section>;
 ---
 
 {
   visible && (
-    <section>
+    <section class={className}>
       <h2 class="text-xl tracking-widest font-medium uppercase border-dotted border-b-2 pb-2.5 mb-6">
         {title}
       </h2>
