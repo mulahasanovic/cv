@@ -39,6 +39,7 @@ export type PersonalDetailsProps = Props;
         alt={`${firstName} ${lastName}`}
         width={120}
         height={120}
+        densities={[1, 2]}
         format="jpg"
       />
     )
@@ -53,22 +54,22 @@ export type PersonalDetailsProps = Props;
       {jobTitle}
     </h2>
   </div>
-  <div class="w-72 space-y-1.5 md:ml-auto">
+  <div class="w-72 space-y-2.5 print:space-y-1.5 md:ml-auto">
     {
       phoneNumber && (
-        <h5 class="relative">
+        <p class="relative">
           <Icon
             size={12}
             name={"icon_phone"}
             class="block absolute top-0 bottom-0 m-auto"
           />
           <span class="block translate-x-6">{phoneNumber}</span>
-        </h5>
+        </p>
       )
     }
     {
       emailAddress && (
-        <h5 class="relative">
+        <p class="relative">
           <Icon
             width={12}
             height={10}
@@ -81,12 +82,12 @@ export type PersonalDetailsProps = Props;
           >
             {emailAddress}
           </a>
-        </h5>
+        </p>
       )
     }
     {
       personalWebsite && (
-        <h5 class="relative">
+        <p class="relative">
           <Icon
             size={12}
             name="icon_web"
@@ -99,12 +100,12 @@ export type PersonalDetailsProps = Props;
           >
             {personalWebsite}
           </LinkWithArrow>
-        </h5>
+        </p>
       )
     }
     {
       (city || country) && (
-        <h5 class="relative">
+        <p class="relative">
           <Icon
             width={10}
             height={13}
@@ -116,7 +117,7 @@ export type PersonalDetailsProps = Props;
               country ? country : ""
             }`}
           </span>
-        </h5>
+        </p>
       )
     }
   </div>

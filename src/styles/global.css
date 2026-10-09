@@ -61,3 +61,10 @@ ol {
 ul ul {
   @apply pl-4;
 }
+
+/* Nested link lists (e.g. Dotcom's project anchors): give tap targets room on screen. */
+@media screen {
+  ul ul li + li {
+    margin-top: 6px;
+  }
+}
