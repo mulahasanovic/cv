@@ -8,6 +8,22 @@ import Section from "../components/Section.astro";
 import Entry, { type EntryProps } from "../components/Entry.astro";
 import Skill, { Proficiency, type SkillProps } from "../components/Skill.astro";
 import type { MarkdownInstance } from "astro";
+import { execSync } from "node:child_process";
+
+// "Last updated" = date of the latest commit; falls back to the build date.
+function getLastUpdated(): Date {
+  try {
+    const iso = execSync("git log -1 --format=%cI", { encoding: "utf8" }).trim();
+    if (iso) return new Date(iso);
+  } catch {}
+  return new Date();
+}
+const lastUpdated = getLastUpdated();
+const lastUpdatedLabel = lastUpdated.toLocaleDateString("en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
 
 function compareDates(
   date1: string | undefined,
@@ -184,7 +200,7 @@ const pageUrl = `https://cv.sead.dev`;
       <PersonalDetails {...personalDetails} />
 
       <Section title="Summary">
-        Detail-oriented Software Developer with a decade of experience in
+        Detail-oriented Software Developer with more than a decade of experience in
         diverse technologies, with expertise in design, architecture,
         optimizations, and user experience. Proactive and dedicated to
         continuous learning.
@@ -243,6 +259,14 @@ const pageUrl = `https://cv.sead.dev`;
         }
       </Section>
     </main>
+    <footer
+      class="mx-auto max-w-4xl py-6 text-center text-sm text-neutral-500 dark:text-neutral-400 print:py-2 print:text-xs"
+    >
+      Last updated:
+      <time datetime={lastUpdated.toISOString().slice(0, 10)}>
+        {lastUpdatedLabel}
+      </time>
+    </footer>
     <script>
       function isInApp(): boolean {
         const rules = [
