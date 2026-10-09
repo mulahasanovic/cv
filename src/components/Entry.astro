@@ -1,8 +1,7 @@
 ---
-import type { ComponentProps } from "astro/types";
 import LinkWithArrow from "./LinkWithArrow.astro";
 
-interface Props {
+export interface Props {
   title: string;
   sub: string;
   subLink?: string;
@@ -23,7 +22,7 @@ if (!sub) {
 if (!compiledContent) {
   throw new Error("Entry content is not optional.");
 }
-export type EntryProps = ComponentProps<typeof Entry>;
+export type EntryProps = Props;
 ---
 
 <div>

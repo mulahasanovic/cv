@@ -8,17 +8,9 @@ import Section from "../components/Section.astro";
 import Entry, { type EntryProps } from "../components/Entry.astro";
 import Skill, { Proficiency, type SkillProps } from "../components/Skill.astro";
 import type { MarkdownInstance } from "astro";
-import { execSync } from "node:child_process";
 
-// "Last updated" = date of the latest commit; falls back to the build date.
-function getLastUpdated(): Date {
-  try {
-    const iso = execSync("git log -1 --format=%cI", { encoding: "utf8" }).trim();
-    if (iso) return new Date(iso);
-  } catch {}
-  return new Date();
-}
-const lastUpdated = getLastUpdated();
+// "Last updated" = build date; Netlify rebuilds on every push.
+const lastUpdated = new Date();
 const lastUpdatedLabel = lastUpdated.toLocaleDateString("en-GB", {
   day: "numeric",
   month: "long",

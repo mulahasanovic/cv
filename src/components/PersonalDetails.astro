@@ -1,10 +1,9 @@
 ---
-import type { ComponentProps } from "astro/types";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import me from "../images/me.jpg";
 import LinkWithArrow from "./LinkWithArrow.astro";
-interface Props {
+export interface Props {
   firstName: string;
   middleName?: string;
   lastName: string;
@@ -28,7 +27,7 @@ const {
   personalWebsite,
   showImage = true,
 } = Astro.props;
-export type PersonalDetailsProps = ComponentProps<typeof PersonalDetails>;
+export type PersonalDetailsProps = Props;
 ---
 
 <div class="flex flex-wrap md:flex-nowrap print:flex-nowrap">

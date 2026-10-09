@@ -1,13 +1,12 @@
 ---
-import type { ComponentProps } from "astro/types";
 
-interface Props {
+export interface Props {
   title: string;
   className?: string;
   visible?: boolean;
 }
 const { title, className = "", visible = true } = Astro.props;
-export type SectionProps = ComponentProps<typeof Section>;
+export type SectionProps = Props;
 ---
 
 {

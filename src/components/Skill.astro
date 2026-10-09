@@ -1,5 +1,4 @@
 ---
-import type { ComponentProps } from "astro/types";
 
 export enum Proficiency {
   Basic = 1,
@@ -10,12 +9,12 @@ export enum Proficiency {
   Native,
 }
 
-interface Props {
+export interface Props {
   label: string;
   proficiency?: Proficiency;
 }
 const { label, proficiency } = Astro.props;
-export type SkillProps = ComponentProps<typeof Skill>;
+export type SkillProps = Props;
 ---
 
 <li class="flex items-center">
